@@ -1,10 +1,29 @@
-/*global window*/
+/*global window, define, exports, module*/
 
-(function (win) {
+(function (root, factory) {
     "use strict";
-    var nop = function () {};
+     if (typeof define === "function" && define.amd) {
+        define([], factory);
+    } else if (typeof exports === "object") {
+        module.exports = factory();
+    } else {
+        root.probe = factory();
+    }
+}(window, function () {
+    "use strict";
+    var nop = function () {},
+        win = window;
 
+    /**
+     * computeEvents - will compute all the events that need to be fired
+     *
+     * @param {Object} oldRect - the old coordinates of the probe
+     * @param {Object} newRect - the new coordinates of the probe
+     * @param {Number} viewportHeight - the height of the current viewport
+     * @return {Object} - the object containing all the events
+     */
     var computeEvents = function (oldRect, newRect, viewportHeight) {
+        console.log(oldRect.bottom, newRect.bottom);
         return {
             onTopHitTop: {
                 shouldFire: (oldRect.top * newRect.top) <= 0,
@@ -24,8 +43,6 @@
             }
         };
     };
-
-
 
     var probe = function (element, config) {
         var viewportHeight = win.innerHeight,
@@ -54,5 +71,5 @@
         handleScroll();
     };
 
-    win.probe = probe;
-}(window));
+    return probe;
+}));
