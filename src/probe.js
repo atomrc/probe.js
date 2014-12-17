@@ -23,22 +23,21 @@
      * @return {Object} - the object containing all the events
      */
     var computeEvents = function (oldRect, newRect, viewportHeight) {
-        console.log(oldRect.bottom, newRect.bottom);
         return {
             onTopHitTop: {
-                shouldFire: (oldRect.top * newRect.top) <= 0,
+                shouldFire: newRect.top !== 0 && (oldRect.top * newRect.top) <= 0,
                 visible: newRect.top >= 0
             },
             onBottomHitTop: {
-                shouldFire: (oldRect.bottom * newRect.bottom) <= 0,
+                shouldFire: newRect.bottom !== 0 && (oldRect.bottom * newRect.bottom) <= 0,
                 visible: newRect.bottom >= 0
             },
             onTopHitBottom: {
-                shouldFire: ((oldRect.top - viewportHeight) * (newRect.top - viewportHeight)) <= 0,
+                shouldFire: newRect.top !== 0 && ((oldRect.top - viewportHeight) * (newRect.top - viewportHeight)) <= 0,
                 visible: newRect.top - viewportHeight >= 0
             },
             onBottomHitBottom: {
-                shouldFire: ((oldRect.bottom - viewportHeight) * (newRect.bottom - viewportHeight)) <= 0,
+                shouldFire: newRect.bottom !== 0 && ((oldRect.bottom - viewportHeight) * (newRect.bottom - viewportHeight)) <= 0,
                 visible: newRect.bottom - viewportHeight >= 0
             }
         };
