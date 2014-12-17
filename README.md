@@ -10,7 +10,8 @@ With probe.js you can, for example :
 
 - track an analytics event when your user reach the bottom of the page;
 - lazy load something on the page that is not visible on load (Disqus comments would be a good example);
-- change the state of a sticky header, footer, ...
+- change the state of a sticky header, footer;
+- ...
 
 Install
 =======
