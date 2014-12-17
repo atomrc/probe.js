@@ -1,0 +1,27 @@
+{
+  "name": "probe.js",
+  "version": "0.0.1",
+  "description": "What's up on the screen",
+  "main": "probe.js",
+  "scripts": {
+    "test": "node_modules/jasmine-node/bin/jasmine-node spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atomrc/probe.js.git"
+  },
+  "keywords": [
+    "probe",
+    "scroll"
+  ],
+  "author": "Thomas Belin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atomrc/probe.js/issues"
+  },
+  "homepage": "https://github.com/atomrc/probe.js",
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-uglify": "*"
+  }
+}
