@@ -46,6 +46,7 @@
     var probe = function (element, config) {
         var viewportHeight = win.innerHeight,
             oldRect = element.getBoundingClientRect(),
+            blockedEvents = {},
 
             conf = {
                 onTopHitTop: config.onTopHitTop || nop,
@@ -59,8 +60,9 @@
                     events = computeEvents(oldRect, rect, viewportHeight);
 
                 for (var i in events) {
-                    if (events[i].shouldFire) {
-                        conf[i](events[i].visible);
+                    var ev = events[i];
+                    if (blockedEvents[i] !== false && ev.shouldFire) {
+                        blockedEvents[i] = conf[i](ev.visible);
                     }
                 }
                 oldRect = rect;
