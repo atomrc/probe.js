@@ -37,6 +37,19 @@ probe(element, {
 });
 ```
 
+You can prevent a specific event to be triggered after it has been triggered once (or more) by returning `false` in the callback. For example this piece of code will only be fired once :
+
+```javascript
+var element = document.getElementById("probe");
+probe(element, {
+    onAppearStart: function () {
+        ga('send', 'event', 'comments', 'view-comments-section');
+
+        return false; //will prevent probe.js from calling that callback latter
+    }
+});
+```
+
 Events reference
 =======
 
