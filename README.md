@@ -31,7 +31,7 @@ then transform some element of your DOM into a probe :
 ```javascript
 var element = document.getElementById("probe");
 probe(element, {
-    onTopHitBottom: function (isVisible) {
+    onAppearStart: function () {
         ga('send', 'event', 'comments', 'view-comments-section');
     }
 });
@@ -44,9 +44,9 @@ here is the configuration object you can pass to the constructor of a probe
 
 ```javascript
 {
-    onTopHitTop: function () {}, //when the top border of the element hits the top of the screen
-    onBottomHitTop: function () {}, //when the bottom border of the element hits the top of the screen
-    onTopHitBottom: function () {}, //when the top border of the element hits the bottom of the screen
-    onBottomHitBottom: function () {}, //when the bottom border of the element hits the bottom of the screen
+    onAppearStart: function () {}, //when the element starts appearing on the screen
+    onAppearEnd: function () {}, //when the element has completly appeared on the screen
+    onDisappearStart: function () {}, //when the element starts disappearing from the screen
+    onDisappearEnd: function () {}, //when the element has disappeared from the screen
 }
 ```
