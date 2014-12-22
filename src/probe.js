@@ -66,13 +66,13 @@
         return {
             onAppearStart:
                 states.previous === RECT_STATES.HIDDEN &&
-                states.current === RECT_STATES.PARTIALLY_VISIBLE,
+                states.current !== RECT_STATES.HIDDEN,
 
             onAppearEnd: states.previous !== RECT_STATES.VISIBLE &&
                 states.current === RECT_STATES.VISIBLE,
 
             onDisappearStart: states.previous === RECT_STATES.VISIBLE &&
-                states.current === RECT_STATES.PARTIALLY_VISIBLE,
+                states.current !== RECT_STATES.VISIBLE,
 
             onDisappearEnd: states.previous !== RECT_STATES.HIDDEN &&
                 states.current === RECT_STATES.HIDDEN

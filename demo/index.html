@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            height: 2000px;
+        }
+        .filler {
+            height: 1000px;
+        }
+        .probe { 
+            height: 10px;
+            overflow: hidden;
+            background-color: red;
+        }
+        .sticky-header.sticky {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="filler"></div>
+    <div class="probe">
+        <div class="sticky-header">Header</div>
+    </div>
+    <script src="./../src/probe.js"></script>
+    <script>
+        var probeElement = document.querySelector(".probe"),
+            stickyHeader = document.querySelector(".sticky-header");
+
+        probe(probeElement, {
+
+            onAppearStart: function () {
+                console.log("apprearing");
+                stickyHeader.classList.remove("sticky");
+            },
+
+            onAppearEnd: function () {
+                //console.log("appeared");
+            },
+
+            onDisappearStart: function () {
+                console.log("disappearing");
+                stickyHeader.classList.add("sticky");
+            },
+
+            onDisappearEnd: function () {
+                //console.log("disappeared");
+            }
+
+        });
+    </script>
+</body>
+</html>
